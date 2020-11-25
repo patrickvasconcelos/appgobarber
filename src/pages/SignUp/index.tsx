@@ -2,12 +2,14 @@ import React from 'react';
 import { Image, KeyboardAvoidingView, Platform } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 import { ScrollView } from 'react-native-gesture-handler';
+import { useNavigation } from '@react-navigation/native';
 import { Container, BackToSignIn, BackToSignInText, Title } from './styles';
 import logoImg from '../../assets/logo.png';
 import Input from '../../components/Input';
 import Button from '../../components/Button';
 
 const SignUp: React.FC = () => {
+  const navigation = useNavigation();
   return (
     <>
       <KeyboardAvoidingView
@@ -29,7 +31,7 @@ const SignUp: React.FC = () => {
 
             <Button
               onPress={() => {
-                console.log('click');
+                console.log('criar conta');
               }}
             >
               Cadastrar
@@ -37,11 +39,7 @@ const SignUp: React.FC = () => {
           </Container>
         </ScrollView>
       </KeyboardAvoidingView>
-      <BackToSignIn
-        onPress={() => {
-          console.log('criar conta');
-        }}
-      >
+      <BackToSignIn onPress={() => navigation.goBack()}>
         <Icon name="arrow-left" size={20} color="#ffffff" />
         <BackToSignInText>Voltar para logon</BackToSignInText>
       </BackToSignIn>
